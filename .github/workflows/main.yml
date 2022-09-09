@@ -32,7 +32,7 @@ jobs:
 
     - uses: vimtor/action-zip@v1
       with:
-        files: DDNS Now IP Address Changer/bin/**/
+        files: DDNS Now IP Address Changer/bin
         dest: build.zip
 
     - uses: actions/upload-artifact@v2
