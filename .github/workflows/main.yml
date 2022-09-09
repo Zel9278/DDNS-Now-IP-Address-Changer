@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - "master"
+env:
+  projectname: DDNS Now IP Address Changer
 
 jobs:
   build:
@@ -17,21 +19,21 @@ jobs:
       with:
         nuget-api-key: ${{ secrets.NuGetAPIKey }}
         nuget-version: '5.x'
-    - run: nuget restore "DDNS Now IP Address Changer.sln"
+    - run: nuget restore "${{ env.projectname }}.sln"
 
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.3
 
     - name: MSBuild x86
-      working-directory: DDNS Now IP Address Changer
-      run: msbuild "DDNS Now IP Address Changer.csproj" -p:Configuration=Release
+      working-directory: ${{ env.projectname }}
+      run: msbuild "${{ env.projectname }}.csproj" -p:Configuration=Release
       
     #- name: MSBuild x64
-    #  working-directory: DDNS Now IP Address Changer
-    #  run: msbuild "DDNS Now IP Address Changer.csproj" /p:Configuration=Release /p:Platform=x64
+    #  working-directory: ${{ env.projectname }}
+    #  run: msbuild "${{ env.projectname }}.csproj" /p:Configuration=Release /p:Platform=x64
 
     - name: Zip
-      run: powershell compress-archive -Path "DDNS` Now` IP` Address` Changer\bin\Release\*" -DestinationPath build.zip
+      run: powershell compress-archive -Path "${{ env.projectname }}\bin\Release\*" -DestinationPath build.zip
 
     - uses: actions/upload-artifact@v2
       with:
