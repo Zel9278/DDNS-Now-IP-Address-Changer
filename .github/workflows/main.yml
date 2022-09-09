@@ -1,0 +1,48 @@
+name: build
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@master
+
+    - uses: nuget/setup-nuget@v1.0.5
+      with:
+        nuget-api-key: ${{ secrets.NuGetAPIKey }}
+        nuget-version: '5.x'
+    - run: nuget restore "DDNS Now IP Address Changer.sln"
+
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.3
+
+    - name: MSBuild x86
+      working-directory: DDNS Now IP Address Changer
+      run: msbuild "DDNS Now IP Address Changer.csproj" -p:Configuration=Release
+      
+    - name: MSBuild x64
+      working-directory: DDNS-Now-IP-Address-Changer
+      run: msbuild "DDNS Now IP Address Changer.csproj" /p:Configuration=Release /p:Platform=x64
+
+    - uses: edgarrc/action-7z@v1
+      with:
+        args: 7z a -t7z -mx=9 build.7z "DDNS Now IP Address Changer/bin"
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Release
+        path: |
+            DDNS Now IP Address Changer/bin/
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: 1.0.3
+        files: DDNS Now IP Address Changer/bin/*.7z
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
