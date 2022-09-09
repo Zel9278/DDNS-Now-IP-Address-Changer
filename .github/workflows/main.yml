@@ -32,18 +32,21 @@ jobs:
 
     - uses: vimtor/action-zip@v1
       with:
-        files: DDNS Now IP Address Changer/bin
-        dest: build.zip
+        files: |
+          DDNS Now IP Address Changer/bin/Release/
+        dest: |
+          build.zip
 
     - uses: actions/upload-artifact@v2
       with:
         name: Release
         path: |
-            build.zip
+          build.zip
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: 1.0.0
-        files: build.zip
+        files: |
+          build.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
