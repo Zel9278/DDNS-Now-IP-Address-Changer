@@ -31,7 +31,7 @@ jobs:
     #  run: msbuild "DDNS Now IP Address Changer.csproj" /p:Configuration=Release /p:Platform=x64
 
     - name: Zip
-      run: powershell compress-archive "DDNS Now IP Address Changer/bin/release" build
+      run: powershell compress-archive -Path "DDNS` Now` IP` Address` Changer\bin\Release\*" -DestinationPath build.zip
 
     - uses: actions/upload-artifact@v2
       with:
