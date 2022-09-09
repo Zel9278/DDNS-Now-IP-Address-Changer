@@ -38,7 +38,7 @@ jobs:
           build.zip
 
     - run: |
-        dir
+        dir DDNS Now IP Address Changer/bin/Release/
 
     - uses: actions/upload-artifact@v2
       with:
