@@ -37,6 +37,9 @@ jobs:
         dest: |
           build.zip
 
+    - run: |
+        dir
+
     - uses: actions/upload-artifact@v2
       with:
         name: Release
