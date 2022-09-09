@@ -27,7 +27,7 @@ jobs:
       run: msbuild "DDNS Now IP Address Changer.csproj" -p:Configuration=Release
       
     - name: MSBuild x64
-      working-directory: DDNS-Now-IP-Address-Changer
+      working-directory: DDNS Now IP Address Changer
       run: msbuild "DDNS Now IP Address Changer.csproj" /p:Configuration=Release /p:Platform=x64
 
     - uses: edgarrc/action-7z@v1
