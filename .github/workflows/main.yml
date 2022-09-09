@@ -39,7 +39,7 @@ jobs:
       with:
         name: Release
         path: |
-            DDNS Now IP Address Changer/bin/
+            build.zip
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
