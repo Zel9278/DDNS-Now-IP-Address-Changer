@@ -30,12 +30,8 @@ jobs:
     #  working-directory: DDNS Now IP Address Changer
     #  run: msbuild "DDNS Now IP Address Changer.csproj" /p:Configuration=Release /p:Platform=x64
 
-    - uses: vimtor/action-zip@v1
-      with:
-        files: |
-          DDNS\ Now\ IP\ Address\ Changer/bin/Release/
-        dest: |
-          build.zip
+    - name: Zip
+      run: zip -r build.zip . -x "DDNS Now IP Address Changer/Release/*"
 
     - uses: actions/upload-artifact@v2
       with:
