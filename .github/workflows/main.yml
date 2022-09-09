@@ -33,12 +33,9 @@ jobs:
     - uses: vimtor/action-zip@v1
       with:
         files: |
-          "DDNS Now IP Address Changer/bin/Release/"
+          DDNS\ Now\ IP\ Address\ Changer/bin/Release/
         dest: |
           build.zip
-
-    - run: |
-        dir DDNS Now IP Address Changer/bin/Release/
 
     - uses: actions/upload-artifact@v2
       with:
