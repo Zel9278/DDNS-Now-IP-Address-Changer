@@ -30,6 +30,11 @@ jobs:
     #  working-directory: DDNS Now IP Address Changer
     #  run: msbuild "DDNS Now IP Address Changer.csproj" /p:Configuration=Release /p:Platform=x64
 
+    - uses: vimtor/action-zip@v1
+      with:
+        files: DDNS Now IP Address Changer/bin/**/
+        dest: build.zip
+
     - uses: actions/upload-artifact@v2
       with:
         name: Release
@@ -38,7 +43,7 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: 1.0.3
-        files: DDNS Now IP Address Changer/bin/*.7z
+        tag_name: 1.0.0
+        files: build.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
