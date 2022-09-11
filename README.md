@@ -13,6 +13,7 @@ IPv4, v6 アドレスを自動で取得し，DDNS Now の設定を自動変更�
 ## 使い方
 
 1. ビルドすると生成される `DDNS Now IP Address Changer.exe.config` の 14 行目に `ユーザー名 か ドメイン名` を入力
-2. 17 行目に API 用トークンを入力
-   - API 用トークンは [DDNS Now](https://ddns.kuku.lu) にログインし， `詳細設定` の下にある `API用トークン` を開くと入手出来ます。
+~~2. 17 行目に API 用トークンを入力~~
+   ~~- API 用トークンは [DDNS Now](https://ddns.kuku.lu) にログインし， `詳細設定` の下にある `API用トークン` を開くと入手出来ます。~~
+2. 17行目に`ドメインのパスワード`を入力
 3. `DDNS Now IP Address Changer.exe` を実行
